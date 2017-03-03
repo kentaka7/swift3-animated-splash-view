@@ -33,7 +33,7 @@ class MenuNavigationViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.orange
         
-        self.splashView = Bundle.main.loadNibNamed("SplashView", owner: nil, options: nil)?[0] as? SplashView
+        self.splashView = SplashView.getView()
 
         self.view.addSubview(splashView)
     }

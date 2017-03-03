@@ -44,6 +44,10 @@ class SplashView: UIView
        
     }
 
+    static func getView () -> SplashView {
+        return Bundle.main.loadNibNamed("SplashView", owner: nil, options: nil)?[0] as! SplashView
+    }
+    
     override func draw(_ rect: CGRect) {
         self.title1X.constant += self.offset
         self.title2X.constant += self.offset
