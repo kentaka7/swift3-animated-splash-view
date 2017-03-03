@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6912D5551E68D5EC00B3B36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6912D5541E68D5EC00B3B36D /* LaunchScreen.storyboard */; };
 		6972E0C81E68A57600B5F113 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E0C71E68A57600B5F113 /* AppDelegate.swift */; };
 		6972E0CA1E68A57600B5F113 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E0C91E68A57600B5F113 /* ViewController.swift */; };
 		6972E0CD1E68A57600B5F113 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6972E0CB1E68A57600B5F113 /* Main.storyboard */; };
@@ -14,6 +15,8 @@
 		6972E0DD1E68A57600B5F113 /* SplashAnimatedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E0DC1E68A57600B5F113 /* SplashAnimatedViewTests.swift */; };
 		6972E0E81E68A57600B5F113 /* SplashAnimatedViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E0E71E68A57600B5F113 /* SplashAnimatedViewUITests.swift */; };
 		6972E0F61E68B3A300B5F113 /* MenuNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E0F51E68B3A300B5F113 /* MenuNavigationViewController.swift */; };
+		6972E0F81E68C4CC00B5F113 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6972E0F71E68C4CC00B5F113 /* SplashView.swift */; };
+		6972E0FE1E68C5A400B5F113 /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6972E0FD1E68C5A400B5F113 /* SplashView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6912D5541E68D5EC00B3B36D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6972E0C41E68A57600B5F113 /* SplashAnimatedView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplashAnimatedView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6972E0C71E68A57600B5F113 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6972E0C91E68A57600B5F113 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +51,8 @@
 		6972E0E71E68A57600B5F113 /* SplashAnimatedViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimatedViewUITests.swift; sourceTree = "<group>"; };
 		6972E0E91E68A57600B5F113 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6972E0F51E68B3A300B5F113 /* MenuNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavigationViewController.swift; sourceTree = "<group>"; };
+		6972E0F71E68C4CC00B5F113 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		6972E0FD1E68C5A400B5F113 /* SplashView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 				6972E0CE1E68A57600B5F113 /* Assets.xcassets */,
 				6972E0D31E68A57600B5F113 /* Info.plist */,
 				6972E0F51E68B3A300B5F113 /* MenuNavigationViewController.swift */,
+				6972E0F71E68C4CC00B5F113 /* SplashView.swift */,
+				6972E0FD1E68C5A400B5F113 /* SplashView.xib */,
+				6912D5541E68D5EC00B3B36D /* LaunchScreen.storyboard */,
 			);
 			path = SplashAnimatedView;
 			sourceTree = "<group>";
@@ -236,6 +245,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6972E0CF1E68A57600B5F113 /* Assets.xcassets in Resources */,
+				6912D5551E68D5EC00B3B36D /* LaunchScreen.storyboard in Resources */,
+				6972E0FE1E68C5A400B5F113 /* SplashView.xib in Resources */,
 				6972E0CD1E68A57600B5F113 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6972E0F61E68B3A300B5F113 /* MenuNavigationViewController.swift in Sources */,
+				6972E0F81E68C4CC00B5F113 /* SplashView.swift in Sources */,
 				6972E0CA1E68A57600B5F113 /* ViewController.swift in Sources */,
 				6972E0C81E68A57600B5F113 /* AppDelegate.swift in Sources */,
 			);
@@ -410,6 +422,8 @@
 				DEVELOPMENT_TEAM = PB84JZ9JMP;
 				INFOPLIST_FILE = SplashAnimatedView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
+				"NEW_SETTING[arch=*]" = "Embedded Content ";
 				PRODUCT_BUNDLE_IDENTIFIER = vpetrenko.SplashAnimatedView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -423,6 +437,7 @@
 				DEVELOPMENT_TEAM = PB84JZ9JMP;
 				INFOPLIST_FILE = SplashAnimatedView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = vpetrenko.SplashAnimatedView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -506,6 +521,7 @@
 				6972E0EE1E68A57600B5F113 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6972E0EF1E68A57600B5F113 /* Build configuration list for PBXNativeTarget "SplashAnimatedViewTests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +530,7 @@
 				6972E0F11E68A57600B5F113 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6972E0F21E68A57600B5F113 /* Build configuration list for PBXNativeTarget "SplashAnimatedViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +539,7 @@
 				6972E0F41E68A57600B5F113 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SplashView" customModule="SplashAnimatedView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="juvopin" translatesAutoresizingMaskIntoConstraints="NO" id="43a-EM-yqv">
+                    <rect key="frame" x="150" y="234" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="buP-SV-87g"/>
+                        <constraint firstAttribute="width" secondItem="43a-EM-yqv" secondAttribute="height" multiplier="1:1" id="mIz-cN-SKb"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ra-F8-NOA">
+                    <rect key="frame" x="117" y="244" width="91" height="57.5"/>
+                    <attributedString key="attributedText">
+                        <fragment content="juvo">
+                            <attributes>
+                                <font key="NSFont" size="49" name="Raleway-Bold"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="medlemsarena2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRG-49-jyW">
+                    <rect key="frame" x="124" y="297" width="123" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.62386004964017616" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="CRG-49-jyW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="25.5" id="09f-Cg-JTA"/>
+                <constraint firstItem="9ra-F8-NOA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-11.5" id="0cn-Ei-aid"/>
+                <constraint firstItem="43a-EM-yqv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="8ss-mP-AO4"/>
+                <constraint firstItem="CRG-49-jyW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="23.5" id="ETQ-Ln-Xso"/>
+                <constraint firstItem="43a-EM-yqv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="40" id="lIw-ih-OE2"/>
+                <constraint firstItem="9ra-F8-NOA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="2.5" id="v6E-Vw-TYx"/>
+            </constraints>
+            <connections>
+                <outlet property="imageHeight" destination="buP-SV-87g" id="v7n-rq-0Rp"/>
+                <outlet property="logoImage" destination="43a-EM-yqv" id="RT8-7I-Zgf"/>
+                <outlet property="logoX" destination="8ss-mP-AO4" id="rCl-CS-3Ts"/>
+                <outlet property="logoY" destination="lIw-ih-OE2" id="dDK-mP-sqC"/>
+                <outlet property="title1" destination="9ra-F8-NOA" id="Svv-AP-I3J"/>
+                <outlet property="title1X" destination="0cn-Ei-aid" id="UIG-wU-XU2"/>
+                <outlet property="title1Y" destination="v6E-Vw-TYx" id="rLV-0A-v0D"/>
+                <outlet property="title2" destination="CRG-49-jyW" id="9H8-SM-Jwz"/>
+                <outlet property="title2X" destination="ETQ-Ln-Xso" id="wVR-Za-nYc"/>
+                <outlet property="title2Y" destination="09f-Cg-JTA" id="ggf-3x-8Kp"/>
+            </connections>
+            <point key="canvasLocation" x="-174" y="68"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="juvopin" width="584" height="643"/>
+    </resources>
+</document>
