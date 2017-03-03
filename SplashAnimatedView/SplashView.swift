@@ -8,8 +8,12 @@
 
 import UIKit
 
-
 import UIKit
+
+public func delay(_ delay:Double, closure:@escaping ()->()) {
+    DispatchQueue.main.asyncAfter(
+        deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
+}
 
 class SplashView: UIView
 {
@@ -33,16 +37,6 @@ class SplashView: UIView
     
     let offset: CGFloat = 60
     let offsetChildren: CGFloat = 30
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
- 
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-       
-    }
 
     static func getView () -> SplashView {
         return Bundle.main.loadNibNamed("SplashView", owner: nil, options: nil)?[0] as! SplashView
