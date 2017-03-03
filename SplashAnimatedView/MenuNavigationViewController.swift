@@ -27,15 +27,16 @@ class MenuNavigationViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.orange
-
         self.view.addSubview(splashView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.splashView.addChildElements(elements: [self.title1, self.passwordInput, self.usernameInput, self.buttonInput], constraints: [self.titleTop, self.usernameTop, self.passwordTop, self.buttonTop])
-
+        self.splashView.addChildElements(
+            elements: [self.title1, self.passwordInput, self.usernameInput, self.buttonInput],
+            constraints: [self.titleTop, self.usernameTop, self.passwordTop, self.buttonTop])
+        
         self.splashView.setupChildElements()
     }
     
@@ -47,12 +48,9 @@ class MenuNavigationViewController: UIViewController {
                 self.splashView.animateDissappearTitles()
                 self.splashView.animatePin()
                 self.splashView.animateChild()
-
            }
         }
     }
- 
-    
 }
 
 

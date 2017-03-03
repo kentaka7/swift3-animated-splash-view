@@ -58,46 +58,33 @@ class SplashView: UIView
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        UIView.animate(withDuration: 0.4, delay: 0.5, options: [.curveEaseOut],
-                       animations: {
-                        
-                        self.title1X.constant -= self.offset
-                        self.title1.alpha = 1
-                        self.layoutIfNeeded()
+        UIView.animate(withDuration: 0.4, delay: 0.5, options: [.curveEaseOut], animations: {
+            self.title1X.constant -= self.offset
+            self.title1.alpha = 1
+            self.layoutIfNeeded()
         },
-                       completion: {finished in
-                        dispatchGroup.leave()
-                        
-        }
-        )
+            completion: {finished in
+                dispatchGroup.leave()
+        })
         
         dispatchGroup.enter()
-        UIView.animate(withDuration: 0.4, delay: 0.6, options: [.curveEaseOut],
-                       animations: {
-                        
-                        self.logoX.constant -= self.offset
-                        self.logoImage.alpha = 1
-                        self.layoutIfNeeded()
+        UIView.animate(withDuration: 0.4, delay: 0.6, options: [.curveEaseOut], animations: {
+            self.logoX.constant -= self.offset
+            self.logoImage.alpha = 1
+            self.layoutIfNeeded()
         },
-                       completion: {finished in
-                        dispatchGroup.leave()
-                        
-        }
-        )
+            completion: {finished in
+                dispatchGroup.leave()
+        })
         
         dispatchGroup.enter()
-        UIView.animate(withDuration: 0.4, delay: 0.7, options: [.curveEaseOut],
-                       animations: {
-                        
-                        self.title2X.constant -= self.offset
-                        self.title2.alpha = 1
-                        self.layoutIfNeeded()
-        },
-                       completion: {finished in
-                        dispatchGroup.leave()
-                        
-        }
-        )
+        UIView.animate(withDuration: 0.4, delay: 0.7, options: [.curveEaseOut], animations: {
+            self.title2X.constant -= self.offset
+            self.title2.alpha = 1
+            self.layoutIfNeeded()
+        }, completion: {finished in
+            dispatchGroup.leave()
+        })
         
         dispatchGroup.notify(queue: .main) {
             completion(true)
@@ -106,35 +93,29 @@ class SplashView: UIView
     
     open func animateDissappearTitles() {
 
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut],
-                       animations: {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: {
+             self.title1X.constant += self.offset
+             self.title2X.constant += self.offset
 
-                        self.title1X.constant += self.offset
-                        self.title2X.constant += self.offset
+             self.title1.alpha = 0
+             self.title2.alpha = 0
 
-                        self.title1.alpha = 0
-                        self.title2.alpha = 0
-
-                        self.layoutIfNeeded()
-        },
-                       completion: nil)
+             self.layoutIfNeeded()
+        }, completion: nil)
     }
     
     open func animatePin() {
-
-        UIView.animate(withDuration: 0.4,
-                       delay: 0,
-                       options: UIViewAnimationOptions.curveEaseOut,
-                       animations: {
-                        
-                        self.imageHeight.constant = 500
-
-                        self.layoutIfNeeded()
-                        
-        },
-                       completion: nil)
+        
+        UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+              self.imageHeight.constant = 500
+              self.layoutIfNeeded()
+        }, completion: nil)
     }
-    
+}
+
+// Work with child elements
+
+extension SplashView {
     open func addChildElements(elements: [UIView], constraints: [NSLayoutConstraint]) {
         for i in 0...elements.count-1 {
             self.addSubview(elements[i])
@@ -154,23 +135,17 @@ class SplashView: UIView
         for i in 0...childConstraints.count-1 {
             childConstraints[i].constant += self.offsetChildren
         }
-
+        
     }
     
     open func animateChild() {
-        UIView.animate(withDuration: 0.4,
-                       delay: 0.3,
-                       options: .curveEaseOut,
-                       animations: {
-                        
-                        for i in 0...self.childElements.count-1 {
-                            self.childConstraints[i].constant -= self.offsetChildren
-                            self.childElements[i].alpha = 1
-                        }
-
-                        self.layoutIfNeeded()
-        },
-                       completion: nil)
-
+        UIView.animate(withDuration: 0.4, delay: 0.3, options: .curveEaseOut, animations: {
+             for i in 0...self.childElements.count-1 {
+                self.childConstraints[i].constant -= self.offsetChildren
+                self.childElements[i].alpha = 1
+             }
+            
+            self.layoutIfNeeded()
+        }, completion: nil)
     }
 }
