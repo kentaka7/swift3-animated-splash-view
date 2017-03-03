@@ -32,6 +32,7 @@ class SplashView: UIView
     var childConstraints: [NSLayoutConstraint] = []
     
     let offset: CGFloat = 60
+    let offsetChildren: CGFloat = 30
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -144,6 +145,20 @@ class SplashView: UIView
         self.childConstraints = constraints
     }
     
+    open func setupChildElements() {
+        guard childElements.count > 0 && childConstraints.count > 0 else {
+            return
+        }
+        
+        for i in 0...childElements.count-1 {
+            childElements[i].alpha = 0
+        }
+        for i in 0...childConstraints.count-1 {
+            childConstraints[i].constant += self.offsetChildren
+        }
+
+    }
+    
     open func animateChild() {
         UIView.animate(withDuration: 0.4,
                        delay: 0.3,
@@ -151,7 +166,7 @@ class SplashView: UIView
                        animations: {
                         
                         for i in 0...self.childElements.count-1 {
-                            self.childConstraints[i].constant -= self.offset
+                            self.childConstraints[i].constant -= self.offsetChildren
                             self.childElements[i].alpha = 1
                         }
 

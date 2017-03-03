@@ -34,31 +34,20 @@ class MenuNavigationViewController: UIViewController {
         self.view.backgroundColor = UIColor.orange
         
         self.splashView = Bundle.main.loadNibNamed("SplashView", owner: nil, options: nil)?[0] as? SplashView
-        
 
         self.view.addSubview(splashView)
-
     }
     
     var offset : CGFloat = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.offset = 30
-        
-        self.titleTop.constant += self.offset
-        self.usernameTop.constant += self.offset
-        self.passwordTop.constant += self.offset
-        self.buttonTop.constant += self.offset
-        
-        self.title1.alpha = 0
-        self.usernameInput.alpha = 0
-        self.passwordInput.alpha = 0
-        self.buttonInput.alpha = 0
 
         self.splashView.addChildElements(elements: [self.title1, self.passwordInput, self.usernameInput, self.buttonInput],
                                          constraints: [self.titleTop, self.usernameTop, self.passwordTop, self.buttonTop])
+
+        
+        self.splashView.setupChildElements()
 
     }
     
@@ -76,7 +65,7 @@ class MenuNavigationViewController: UIViewController {
                 
                 self.splashView!.animateChild()
 
-                }
+           }
         }
     }
  
