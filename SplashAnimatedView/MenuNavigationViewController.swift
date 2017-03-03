@@ -21,6 +21,7 @@ class MenuNavigationViewController: UIViewController {
     @IBOutlet weak var buttonInput: UIButton!
 
 
+    @IBOutlet weak var titleTop: NSLayoutConstraint!
     @IBOutlet weak var usernameTop: NSLayoutConstraint!
     @IBOutlet weak var passwordTop: NSLayoutConstraint!
     @IBOutlet weak var buttonTop: NSLayoutConstraint!
@@ -33,6 +34,8 @@ class MenuNavigationViewController: UIViewController {
         self.view.backgroundColor = UIColor.orange
         
         self.splashView = Bundle.main.loadNibNamed("SplashView", owner: nil, options: nil)?[0] as? SplashView
+        
+
         self.view.addSubview(splashView)
 
     }
@@ -42,8 +45,9 @@ class MenuNavigationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.offset = self.view.frame.height / 3
+        self.offset = 30
         
+        self.titleTop.constant += self.offset
         self.usernameTop.constant += self.offset
         self.passwordTop.constant += self.offset
         self.buttonTop.constant += self.offset
@@ -53,6 +57,8 @@ class MenuNavigationViewController: UIViewController {
         self.passwordInput.alpha = 0
         self.buttonInput.alpha = 0
 
+        self.splashView.addChildElements(elements: [self.title1, self.passwordInput, self.usernameInput, self.buttonInput],
+                                         constraints: [self.titleTop, self.usernameTop, self.passwordTop, self.buttonTop])
 
     }
     
@@ -63,61 +69,18 @@ class MenuNavigationViewController: UIViewController {
         self.splashView!.animateFirstAppear() { finished in
 
             delay(2.0) {
-                
-                let dispatchGroup = DispatchGroup()
-                
-                dispatchGroup.enter()
-                self.splashView!.animateDissappearTitles() { finished in
-                    dispatchGroup.leave()
-                }
-                
-                dispatchGroup.enter()
-                self.splashView!.animatePin() { finished in
-                    dispatchGroup.leave()
-                }
-                
-                dispatchGroup.notify(queue: .main) {
 
-                    UIView.animate(withDuration: 0.5,
-                                   delay: 0,
-                                   options: .curveEaseOut,
-                                   animations: {
-                                    
-                                    self.splashView.removeFromSuperview()
-                    },
-                                   completion: {finished in
-                                    
-                                    UIView.animate(withDuration: 0.5,
-                                                   delay: 0,
-                                                   options: .curveEaseOut,
-                                                   animations: {
-                                                    
-                                                    self.usernameTop.constant -= self.offset
-                                                    self.passwordTop.constant -= self.offset
-                                                    self.buttonTop.constant -= self.offset
-                                                    
-                                                    self.title1.alpha = 1
-                                                    self.usernameInput.alpha = 1
-                                                    self.passwordInput.alpha = 1
-                                                    self.buttonInput.alpha = 1
-                                                    
-                                                    self.view.layoutIfNeeded()
-                                    },
-                                                   completion: nil)
-                                    
-                    })
-                    
-                    
-                }
+                self.splashView!.animateDissappearTitles() 
+
+                self.splashView!.animatePin()
                 
+                self.splashView!.animateChild()
 
-            }
-            
-
+                }
         }
-
-
     }
+ 
+    
 }
 
 

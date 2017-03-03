@@ -28,6 +28,8 @@ class SplashView: UIView
     @IBOutlet weak var title2X: NSLayoutConstraint!
     @IBOutlet weak var title2Y: NSLayoutConstraint!
  
+    var childElements: [UIView] = []
+    var childConstraints: [NSLayoutConstraint] = []
     
     let offset: CGFloat = 60
     
@@ -103,9 +105,9 @@ class SplashView: UIView
         }
     }
     
-    open func animateDissappearTitles(completionHandler: @escaping (_ result: Bool) -> ()) {
+    open func animateDissappearTitles() {
 
-        UIView.animate(withDuration: 0.4, delay: 0.0, options: [.curveEaseOut],
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut],
                        animations: {
 
                         self.title1X.constant += self.offset
@@ -116,15 +118,12 @@ class SplashView: UIView
 
                         self.layoutIfNeeded()
         },
-                       completion: { finished in
-                        completionHandler(true)
-        }
-        )
+                       completion: nil)
     }
     
-    open func animatePin(completionHandler: @escaping (_ result: Bool) -> ()) {
+    open func animatePin() {
 
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.4,
                        delay: 0,
                        options: UIViewAnimationOptions.curveEaseOut,
                        animations: {
@@ -134,10 +133,31 @@ class SplashView: UIView
                         self.layoutIfNeeded()
                         
         },
-                       completion: { finished in
-                        completionHandler(true)
-        })
+                       completion: nil)
     }
     
+    open func addChildElements(elements: [UIView], constraints: [NSLayoutConstraint]) {
+        for i in 0...elements.count-1 {
+            self.addSubview(elements[i])
+        }
+        self.childElements = elements
+        self.childConstraints = constraints
+    }
     
+    open func animateChild() {
+        UIView.animate(withDuration: 0.4,
+                       delay: 0.3,
+                       options: .curveEaseOut,
+                       animations: {
+                        
+                        for i in 0...self.childElements.count-1 {
+                            self.childConstraints[i].constant -= self.offset
+                            self.childElements[i].alpha = 1
+                        }
+
+                        self.layoutIfNeeded()
+        },
+                       completion: nil)
+
+    }
 }
