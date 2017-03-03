@@ -45,7 +45,7 @@ class MenuNavigationViewController: UIViewController {
   
         self.splashView.animateFirstAppear() { finished in
             delay(2.0) {
-                self.splashView.animateDissappearTitles()
+                self.splashView.animateDisappearTitles()
                 self.splashView.animatePin()
                 self.splashView.animateChild()
            }

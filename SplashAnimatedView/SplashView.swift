@@ -15,6 +15,26 @@ public func delay(_ delay:Double, closure:@escaping ()->()) {
         deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
 }
 
+struct SplashAnimationConfig {
+    static let OFFSET_FIRST_SCREEN: CGFloat = 30
+    static let OFFSET_SECOND_SCREEN: CGFloat = 60
+    
+    static let DURATION_APPEAR = 0.4
+    static let DELAY_FIRST_SCREEN_ELEMENT_1 = 0.5
+    static let DELAY_FIRST_SCREEN_ELEMENT_2 = SplashAnimationConfig.DELAY_FIRST_SCREEN_ELEMENT_1 + 0.1
+    static let DELAY_FIRST_SCREEN_ELEMENT_3 = SplashAnimationConfig.DELAY_FIRST_SCREEN_ELEMENT_2 + 0.1
+    
+    static let DURATION_DISAPPEAR_TITLES = 0.2
+    static let DELAY_DISAPPEAR_TITLES = 0.0
+    
+    static let DURATION_ANIMATE_PIN = SplashAnimationConfig.DURATION_DISAPPEAR_TITLES * 2
+    static let DELAY_ANIMATE_PIN = SplashAnimationConfig.DELAY_DISAPPEAR_TITLES // start disappear titles and zoom pin
+    static let ANIMATE_TO_PIN_HEIGHT: CGFloat = 500.0
+    
+    static let DELAY_ANIMATE_CHILD = SplashAnimationConfig.DURATION_ANIMATE_PIN - 0.1 // start earlier than pin finish
+    static let DURATION_ANIMATE_CHILD = SplashAnimationConfig.DURATION_ANIMATE_PIN // the same as pin duration
+}
+
 class SplashView: UIView
 {
 
@@ -34,18 +54,15 @@ class SplashView: UIView
  
     var childElements: [UIView] = []
     var childConstraints: [NSLayoutConstraint] = []
-    
-    let offset: CGFloat = 60
-    let offsetChildren: CGFloat = 30
 
     static func getView () -> SplashView {
         return Bundle.main.loadNibNamed("SplashView", owner: nil, options: nil)?[0] as! SplashView
     }
     
     override func draw(_ rect: CGRect) {
-        self.title1X.constant += self.offset
-        self.title2X.constant += self.offset
-        self.logoX.constant += self.offset
+        self.title1X.constant += SplashAnimationConfig.OFFSET_FIRST_SCREEN
+        self.title2X.constant += SplashAnimationConfig.OFFSET_FIRST_SCREEN
+        self.logoX.constant += SplashAnimationConfig.OFFSET_FIRST_SCREEN
         
         self.title1.alpha = 0
         self.title2.alpha = 0
@@ -58,8 +75,10 @@ class SplashView: UIView
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        UIView.animate(withDuration: 0.4, delay: 0.5, options: [.curveEaseOut], animations: {
-            self.title1X.constant -= self.offset
+        UIView.animate(withDuration: SplashAnimationConfig.DURATION_APPEAR,
+                       delay: SplashAnimationConfig.DELAY_FIRST_SCREEN_ELEMENT_1,
+                       options: [.curveEaseOut], animations: {
+            self.title1X.constant -= SplashAnimationConfig.OFFSET_FIRST_SCREEN
             self.title1.alpha = 1
             self.layoutIfNeeded()
         },
@@ -68,8 +87,10 @@ class SplashView: UIView
         })
         
         dispatchGroup.enter()
-        UIView.animate(withDuration: 0.4, delay: 0.6, options: [.curveEaseOut], animations: {
-            self.logoX.constant -= self.offset
+        UIView.animate(withDuration: SplashAnimationConfig.DURATION_APPEAR,
+                       delay: SplashAnimationConfig.DELAY_FIRST_SCREEN_ELEMENT_2,
+                       options: [.curveEaseOut], animations: {
+            self.logoX.constant -= SplashAnimationConfig.OFFSET_FIRST_SCREEN
             self.logoImage.alpha = 1
             self.layoutIfNeeded()
         },
@@ -78,8 +99,10 @@ class SplashView: UIView
         })
         
         dispatchGroup.enter()
-        UIView.animate(withDuration: 0.4, delay: 0.7, options: [.curveEaseOut], animations: {
-            self.title2X.constant -= self.offset
+        UIView.animate(withDuration: SplashAnimationConfig.DURATION_APPEAR,
+                       delay: SplashAnimationConfig.DELAY_FIRST_SCREEN_ELEMENT_3,
+                       options: [.curveEaseOut], animations: {
+            self.title2X.constant -= SplashAnimationConfig.OFFSET_FIRST_SCREEN
             self.title2.alpha = 1
             self.layoutIfNeeded()
         }, completion: {finished in
@@ -91,11 +114,13 @@ class SplashView: UIView
         }
     }
     
-    open func animateDissappearTitles() {
+    open func animateDisappearTitles() {
 
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: {
-             self.title1X.constant += self.offset
-             self.title2X.constant += self.offset
+        UIView.animate(withDuration: SplashAnimationConfig.DURATION_DISAPPEAR_TITLES,
+                       delay: SplashAnimationConfig.DELAY_DISAPPEAR_TITLES,
+                       options: [.curveEaseOut], animations: {
+             self.title1X.constant += SplashAnimationConfig.OFFSET_FIRST_SCREEN
+             self.title2X.constant += SplashAnimationConfig.OFFSET_FIRST_SCREEN
 
              self.title1.alpha = 0
              self.title2.alpha = 0
@@ -106,8 +131,10 @@ class SplashView: UIView
     
     open func animatePin() {
         
-        UIView.animate(withDuration: 0.4, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-              self.imageHeight.constant = 500
+        UIView.animate(withDuration: SplashAnimationConfig.DURATION_ANIMATE_PIN,
+                       delay: SplashAnimationConfig.DELAY_ANIMATE_PIN,
+                       options: UIViewAnimationOptions.curveEaseOut, animations: {
+              self.imageHeight.constant = SplashAnimationConfig.ANIMATE_TO_PIN_HEIGHT
               self.layoutIfNeeded()
         }, completion: nil)
     }
@@ -133,15 +160,17 @@ extension SplashView {
             childElements[i].alpha = 0
         }
         for i in 0...childConstraints.count-1 {
-            childConstraints[i].constant += self.offsetChildren
+            childConstraints[i].constant += SplashAnimationConfig.OFFSET_SECOND_SCREEN
         }
         
     }
     
     open func animateChild() {
-        UIView.animate(withDuration: 0.4, delay: 0.3, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: SplashAnimationConfig.DURATION_ANIMATE_CHILD,
+                       delay: SplashAnimationConfig.DELAY_ANIMATE_CHILD,
+                       options: .curveEaseOut, animations: {
              for i in 0...self.childElements.count-1 {
-                self.childConstraints[i].constant -= self.offsetChildren
+                self.childConstraints[i].constant -= SplashAnimationConfig.OFFSET_SECOND_SCREEN
                 self.childElements[i].alpha = 1
              }
             
